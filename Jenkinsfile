@@ -10,9 +10,17 @@ node {
   stage 'Run metrics'
   sh "if [ ! -d ./reports ]; then mkdir ./reports ; fi"
   parallel (
-    phploc: { sh "./vendor/bin/phploc --log-xml ./reports/phploc.xml ./src || true" }
-    phpmd: { sh "./vendor/bin/phpmd ./src xml cleancode,codesize,controversial,design,naming,unusedcode --reportfile ./reports/pmd.xml --exclude *TestsDataFixtures*,*TestCase.php,*Test.php || true" }
-    phpcpd: { sh "./vendor/bin/phpcpd --log-pmd ./reports/pmd-cpd.xml ./src || true" }
-    phpcs: { sh "./vendor/bin/phpcs --report=checkstyle --extensions=php --encoding=utf-8 --report-file=./reports/checkstyle.xml ./src || true" }
+    phploc: {
+      sh "./vendor/bin/phploc --log-xml ./reports/phploc.xml ./src || true"
+    },
+    phpmd: {
+      sh "./vendor/bin/phpmd ./src xml cleancode,codesize,controversial,design,naming,unusedcode --reportfile ./reports/pmd.xml --exclude *TestsDataFixtures*,*TestCase.php,*Test.php || true"
+    },
+    phpcpd: {
+      sh "./vendor/bin/phpcpd --log-pmd ./reports/pmd-cpd.xml ./src || true"
+    },
+    phpcs: {
+      sh "./vendor/bin/phpcs --report=checkstyle --extensions=php --encoding=utf-8 --report-file=./reports/checkstyle.xml ./src || true"
+    }
   )
 }
