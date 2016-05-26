@@ -8,6 +8,6 @@ node {
   stage 'Run tests'
   sh "./vendor/bin/phpunit -c phpunit.xml.dist"
   stage 'Run metrics'
-  sh "if [ ! -d "./reports" ]; then mkdir ./reports ; fi"
+  sh "if [ ! -d ./reports ]; then mkdir ./reports ; fi"
   sh "./vendor/bin/phploc --log-xml ./reports/phploc.xml ./src"
 }
