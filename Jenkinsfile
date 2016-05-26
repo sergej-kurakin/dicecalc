@@ -23,6 +23,7 @@ node {
       sh "./vendor/bin/phpcs --report=checkstyle --extensions=php --encoding=utf-8 --report-file=./reports/checkstyle.xml ./src || true"
     }
   )
-  step([$class: 'PmdPublisher', canComputeNew: false, defaultEncoding: '', healthy: '', pattern: './reports/pmd.xml', unHealthy: ''])
-  step([$class: 'CheckStylePublisher', canComputeNew: false, defaultEncoding: '', healthy: '', pattern: './reports/checkstyle.xml', unHealthy: ''])
+  step([$class: 'PmdPublisher', canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'reports/pmd.xml', unHealthy: ''])
+  step([$class: 'CheckStylePublisher', canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'reports/checkstyle.xml', unHealthy: ''])
+  step([$class: 'PmdPublisher', canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'reports/pmd-cpd.xml', unHealthy: ''])
 }
