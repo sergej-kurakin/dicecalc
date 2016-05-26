@@ -9,8 +9,8 @@ node {
   sh "./vendor/bin/phpunit -c phpunit.xml.dist"
   stage 'Run metrics'
   sh "if [ ! -d ./reports ]; then mkdir ./reports ; fi"
-  sh "./vendor/bin/phploc --log-xml ./reports/phploc.xml ./src"
+  sh "./vendor/bin/phploc --log-xml ./reports/phploc.xml ./src || true"
   sh "./vendor/bin/phpmd ./src xml cleancode,codesize,controversial,design,naming,unusedcode --reportfile ./reports/pmd.xml --exclude *TestsDataFixtures*,*TestCase.php,*Test.php || true"
-  sh "./vendor/bin/phpcpd --log-pmd ./reports/pmd-cpd.xml ./src"
-  sh "./vendor/bin/phpcs --report=checkstyle --extensions=php --encoding=utf-8 --report-file=./reports/checkstyle.xml ./src"
+  sh "./vendor/bin/phpcpd --log-pmd ./reports/pmd-cpd.xml ./src || true"
+  sh "./vendor/bin/phpcs --report=checkstyle --extensions=php --encoding=utf-8 --report-file=./reports/checkstyle.xml ./src || true"
 }
