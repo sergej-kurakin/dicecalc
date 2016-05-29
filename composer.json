@@ -5,7 +5,7 @@
     "keywords": ["dice", "dice calc", "dice calculator", "dice roller"],
     "require-dev": {
         "phpunit/phpunit": "@stable",
-        "fabpot/php-cs-fixer": "@stable",
+        "friendsofphp/php-cs-fixer": "@stable",
         "phpmd/phpmd": "@stable",
         "phploc/phploc": "@stable",
         "pdepend/pdepend": "@stable",
